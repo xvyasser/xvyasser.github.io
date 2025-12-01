@@ -82,12 +82,12 @@ cursor.executemany(insert_sql, processed_rows)
 - ✅ Zero data corruption or character encoding issues
 
 ### Technologies Used
-- **Python 3.x**: ETL scripting
+- **Python **: ETL scripting
 - **Pandas**: CSV parsing and data manipulation
 - **pyodbc**: SQL Server database connectivity
 - **SQL Server**: Data warehouse and analytics platform
 
-### Lesson Learned
+### Why Python and not SQL Server for loading this dataset ?
 For datasets with **international/multi-language content**, Python-based ETL pipelines are more reliable than SQL Server's native BULK INSERT, which was designed primarily for single-byte character sets.
 
 
