@@ -125,4 +125,4 @@ Created **optimized analytical views**:
   - User Reviews 
 - Implemented DAX measures for KPIs, trends, and segmentation
 
-> 📊 **Final Output**: `Steam_Analytics_Dashboard.pbix` (included)
+> 📊 **Final Output**: `Steam_Analytics_Dashboard.pbit` (included)
