@@ -1,0 +1,44 @@
+relationship c34e8868-dc01-791f-d023-426857e63fd0
+	fromColumn: Dim_Developers_View.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship 24920616-36a1-39d9-7a4c-9a6468b7e123
+	fromColumn: Dim_Publishers_View.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship 96a2e3bc-4618-f631-a1c5-97b308fd5733
+	fromColumn: Dim_Genres_View.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship a7d4c441-9e2e-59b7-9e31-657406271491
+	fromColumn: Dim_Platforms_View.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship 45cdcb4f-e6ec-af89-28cd-e52d9433d626
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Applications_View.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship AutoDetected_8d71f9f2-c0e4-48cf-a57b-92d1a5787f48
+	fromColumn: Dim_Categories_View.appid
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship AutoDetected_960e3443-4d6c-4087-bb57-8e4cf0ca6229
+	fromColumn: Grouped.'App ID'
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship AutoDetected_d83519f3-57ef-4d4c-93a3-d7a2858d02bf
+	fromColumn: Dim_Reviews_View.appid
+	toColumn: Fact_Applications_View.'App ID'
+
+relationship 326862ae-4a54-32cd-2940-e5813d21d359
+	fromColumn: Grouped.'Release Date'
+	toColumn: DateTable.Date
+
+relationship f8a94d21-8b5d-0d6e-c5c9-202ab77c7dd0
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Dim_Reviews_View.appid
+	toColumn: Grouped.'App ID'
+

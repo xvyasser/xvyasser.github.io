@@ -1,0 +1,40 @@
+table Dim_Genres_View
+	lineageTag: 7b6b2538-7e02-494a-98bf-1a500cb16601
+
+	column 'App ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5354ada8-9b68-460d-889f-a681e29b6b15
+		summarizeBy: none
+		sourceColumn: App ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ' Genre ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e3d062a-5a95-43fa-bfdb-229b377649cd
+		summarizeBy: count
+		sourceColumn: " Genre ID"
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre
+		dataType: string
+		lineageTag: fb7e1d2d-2c33-46c6-a435-763f0f1529a4
+		summarizeBy: none
+		sourceColumn: Genre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Genres_View = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-M9MOB75\SQLEXPRESS", "Steam"),
+				    dbo_Dim_Genres_View = Source{[Schema="dbo",Item="Dim_Genres_View"]}[Data]
+				in
+				    dbo_Dim_Genres_View
+
+	annotation PBI_ResultType = Table
+
