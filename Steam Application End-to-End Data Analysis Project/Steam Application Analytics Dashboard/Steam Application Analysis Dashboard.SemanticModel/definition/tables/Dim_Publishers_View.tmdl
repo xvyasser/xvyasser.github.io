@@ -1,0 +1,42 @@
+table Dim_Publishers_View
+	lineageTag: 8eeacbc5-3801-4ef8-812e-95be05704372
+
+	column 'App ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: b44a6200-fcc2-4f98-8c22-c2762d9b6cba
+		summarizeBy: none
+		sourceColumn: App ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Publisher ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ee56cf4-fd25-4bbd-9b8e-2d169c99c1c7
+		summarizeBy: count
+		sourceColumn: Publisher ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Publisher
+		dataType: string
+		lineageTag: ef4bcfd7-41e2-4db4-a779-3d551f542878
+		summarizeBy: none
+		sourceColumn: Publisher
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Publishers_View = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-M9MOB75\SQLEXPRESS", "Steam"),
+				    dbo_Dim_Publishers_View = Source{[Schema="dbo",Item="Dim_Publishers_View"]}[Data]
+				in
+				    dbo_Dim_Publishers_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

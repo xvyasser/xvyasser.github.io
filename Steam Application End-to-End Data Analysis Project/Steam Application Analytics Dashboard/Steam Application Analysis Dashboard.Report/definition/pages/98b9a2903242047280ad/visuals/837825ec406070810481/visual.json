@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "837825ec406070810481",
+  "position": {
+    "x": 804.59109239179134,
+    "y": 409.63670579801055,
+    "z": 5000,
+    "height": 309.79693520924815,
+    "width": 475.70714221704452,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Grouped"
+                    }
+                  },
+                  "Property": "Price Range"
+                }
+              },
+              "queryRef": "Grouped.Price Range",
+              "nativeQueryRef": "Price Range",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "___Measures"
+                    }
+                  },
+                  "Property": "TotalGames"
+                }
+              },
+              "queryRef": "___Measures.TotalGames",
+              "nativeQueryRef": "Total Games",
+              "displayName": "Total Games"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "___Measures"
+                  }
+                },
+                "Property": "TotalGames"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

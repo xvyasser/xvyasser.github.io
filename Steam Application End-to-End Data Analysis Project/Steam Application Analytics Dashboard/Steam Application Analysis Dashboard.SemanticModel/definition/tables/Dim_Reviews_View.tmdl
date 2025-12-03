@@ -1,0 +1,54 @@
+table Dim_Reviews_View
+	lineageTag: d38583db-f4c0-4d66-ab35-daf2930c23b1
+
+	column appid
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a431445-b3e6-439c-af9f-15ed044a5dec
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_text
+		dataType: string
+		lineageTag: d99f8280-25f1-4d5e-b1bf-d247edb62bc3
+		summarizeBy: none
+		sourceColumn: review_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column weighted_vote_score
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ce7568eb-8d95-47a3-9bc2-6ed05a5e45a7
+		summarizeBy: sum
+		sourceColumn: weighted_vote_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column steam_purchase
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7c08f6c7-479d-4059-ae68-8e987ce1d692
+		summarizeBy: none
+		sourceColumn: steam_purchase
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Reviews_View = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("F:\Steam Project\steam_dataset_2025_csv_package_v1\steam_dataset_2025_csv\reviews.csv"),[Delimiter=",", Columns=23, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"recommendationid", Int64.Type}, {"appid", Int64.Type}, {"author_steamid", Int64.Type}, {"author_num_games_owned", Int64.Type}, {"author_num_reviews", Int64.Type}, {"author_playtime_forever", Int64.Type}, {"author_playtime_last_two_weeks", Int64.Type}, {"author_playtime_at_review", Int64.Type}, {"author_last_played", Int64.Type}, {"language", type text}, {"review_text", type text}, {"timestamp_created", Int64.Type}, {"timestamp_updated", Int64.Type}, {"voted_up", type logical}, {"votes_up", Int64.Type}, {"votes_funny", Int64.Type}, {"weighted_vote_score", type number}, {"comment_count", Int64.Type}, {"steam_purchase", type logical}, {"received_for_free", type logical}, {"written_during_early_access", type logical}, {"created_at", type datetime}, {"updated_at", type datetime}}),
+				    #"Multiplied Column" = Table.TransformColumns(#"Changed Type", {{"weighted_vote_score", each _ * 100, type number}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Multiplied Column",{"appid", "review_text", "weighted_vote_score", "steam_purchase"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "eb6ca3b580159009097d",
+  "position": {
+    "x": 228.46959358720247,
+    "y": 107.76867622037852,
+    "z": 3000,
+    "height": 270.14014839241548,
+    "width": 320.43219729525879,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Grouped"
+                    }
+                  },
+                  "Property": "Price Range"
+                }
+              },
+              "queryRef": "Grouped.Price Range",
+              "nativeQueryRef": "Price Range",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "___Measures"
+                    }
+                  },
+                  "Property": "TotalGames"
+                }
+              },
+              "queryRef": "___Measures.TotalGames",
+              "nativeQueryRef": "Total Games",
+              "displayName": "Total Games"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "___Measures"
+                  }
+                },
+                "Property": "TotalGames"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
