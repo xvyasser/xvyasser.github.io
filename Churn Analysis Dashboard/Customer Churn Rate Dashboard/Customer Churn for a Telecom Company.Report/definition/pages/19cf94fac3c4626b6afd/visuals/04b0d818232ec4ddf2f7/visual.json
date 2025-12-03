@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "04b0d818232ec4ddf2f7",
+  "position": {
+    "x": 414.65324082822667,
+    "y": 139.32348891828417,
+    "z": 2000,
+    "height": 124.395972248468,
+    "width": 210.64384634073915,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Databel - Data"
+                        }
+                      },
+                      "Property": "Churned"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Databel - Data.Churned)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Databel - Data"
+                      }
+                    },
+                    "Property": "Churned"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

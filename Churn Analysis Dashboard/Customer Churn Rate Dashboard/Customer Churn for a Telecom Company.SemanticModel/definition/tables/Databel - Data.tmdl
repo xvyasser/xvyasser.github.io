@@ -1,0 +1,368 @@
+table 'Databel - Data'
+	lineageTag: ab495956-d3ba-4f84-a9dc-fbfc38dd44f9
+
+	measure 'Number of Customers' = count('Databel - Data'[Customer ID])
+		formatString: 0
+		lineageTag: de46919f-37c3-42a1-b42a-f3140e7d1cea
+
+	measure 'Number of Unique Customers' = DISTINCTCOUNT('Databel - Data'[Customer ID])
+		formatString: 0
+		lineageTag: f1fa93fe-ed76-4a6a-b40e-1d5dcc43d993
+
+	measure 'Number of Churned Customers' = sum('Databel - Data'[Churned])
+		formatString: 0
+		lineageTag: 2c844bd9-9216-45a4-9876-06843fabb75d
+
+	measure 'Churn Rate' = [Number of Churned Customers]/[Number of Customers]
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 7845a719-085f-45a6-b575-9489bd2586bd
+
+	measure 'Avg Customer Service Calls' = ```
+			
+			DIVIDE(
+			    SUM('Databel - Data'[Customer Service Calls]),
+			    COUNTROWS('Databel - Data'),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 44641163-dbec-48f1-928c-bc5c4bae3c13
+
+	measure 'Avg Extra International Charges' = Sum('Databel - Data'[Extra International Charges])/[Number of Customers]
+		lineageTag: 28a71093-dd85-465f-9e19-8c3a631768b4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Extra Data Charges' = SUM('Databel - Data'[Extra Data Charges])/[Number of Customers]
+		lineageTag: 2702c25b-208b-4f6e-b01f-93cf40073af4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 3b65105a-fac2-4773-b194-b9a85cefe383
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Label'
+		dataType: string
+		lineageTag: b1c281ed-da24-4a06-811d-079bb3802814
+		summarizeBy: none
+		sourceColumn: Churn Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Length (in months)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6929a06c-6059-4cfc-8809-bcff42bc8c61
+		summarizeBy: sum
+		sourceColumn: Account Length (in months)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: 33f0ad5b-1403-4a48-aff5-31e801e29cef
+		summarizeBy: sum
+		sourceColumn: Local Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Mins'
+		dataType: double
+		lineageTag: a73da051-6d42-4e3d-bb17-94bc010b1954
+		summarizeBy: sum
+		sourceColumn: Local Mins
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Intl Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: bb6767b2-19d9-474e-a610-c6faaafb551b
+		summarizeBy: sum
+		sourceColumn: Intl Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Intl Mins'
+		dataType: double
+		lineageTag: 081fd7bd-10e5-4c0a-9a37-a46822463f05
+		summarizeBy: sum
+		sourceColumn: Intl Mins
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Intl Active'
+		dataType: string
+		lineageTag: 3b1663c8-9cf8-4123-b44c-f97bafcefd29
+		summarizeBy: none
+		sourceColumn: Intl Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Intl Plan'
+		dataType: string
+		lineageTag: 5af78f20-2c5e-4246-8adb-670bf3cd58b3
+		summarizeBy: none
+		sourceColumn: Intl Plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extra International Charges'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e95925f-1bb9-4c19-8f89-5bf26da6cbb6
+		summarizeBy: sum
+		sourceColumn: Extra International Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Service Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: 49266e19-6999-42d3-b638-d434d4e9f52c
+		summarizeBy: sum
+		sourceColumn: Customer Service Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Monthly GB Download'
+		dataType: int64
+		formatString: 0
+		lineageTag: 68c3ace0-f463-4317-9b40-18bc58b98887
+		summarizeBy: sum
+		sourceColumn: Avg Monthly GB Download
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unlimited Data Plan'
+		dataType: string
+		lineageTag: 1782f54d-b94d-4988-8024-11023fa160b3
+		summarizeBy: none
+		sourceColumn: Unlimited Data Plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extra Data Charges'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bd0f222-9f99-4cdd-a907-f70bb2a53d2c
+		summarizeBy: sum
+		sourceColumn: Extra Data Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: d2dc36f3-17d1-4728-93b6-06e78a49eecf
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phone Number'
+		dataType: string
+		lineageTag: c78386c1-8b08-481d-8f35-8af7ed3e3d1a
+		summarizeBy: none
+		sourceColumn: Phone Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 0ff2d166-0361-4cc1-a694-c9842ca5005f
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a20f48b-0b19-497a-8543-f5ec82cd57d2
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Databel - Data","TableItemName":"Age (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Under 30'
+		dataType: string
+		lineageTag: 67922689-606e-4b37-aaf1-32744bc98aff
+		summarizeBy: none
+		sourceColumn: Under 30
+
+		annotation SummarizationSetBy = Automatic
+
+	column Senior
+		dataType: string
+		lineageTag: 992ee1c1-bbf1-4322-a9a0-7d8efb339329
+		summarizeBy: none
+		sourceColumn: Senior
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group
+		dataType: string
+		lineageTag: c776e255-5658-4920-9e40-5b0a05e846f4
+		summarizeBy: none
+		sourceColumn: Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of Customers in Group'
+		dataType: int64
+		formatString: 0
+		lineageTag: 757066ce-1b09-4c2e-be16-17dfea889b94
+		summarizeBy: sum
+		sourceColumn: Number of Customers in Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Protection & Online Backup'
+		dataType: string
+		lineageTag: 0120f5ac-f742-4546-a9f1-1680e5ff5ac3
+		summarizeBy: none
+		sourceColumn: Device Protection & Online Backup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Type'
+		dataType: string
+		lineageTag: 02b116ab-a9ec-4110-8fd2-7f6179603fd0
+		summarizeBy: none
+		sourceColumn: Contract Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method'
+		dataType: string
+		lineageTag: 15204d5c-6c38-4515-a62c-5469f38aaf13
+		summarizeBy: none
+		sourceColumn: Payment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monthly Charge'
+		dataType: int64
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b37dc083-fe1b-487d-94c9-cbe3aa5ee74c
+		summarizeBy: sum
+		sourceColumn: Monthly Charge
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Total Charges'
+		dataType: int64
+		formatString: 0
+		lineageTag: 770b9aa6-d4bc-4b41-a439-37b63cc9bd79
+		summarizeBy: sum
+		sourceColumn: Total Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Category'
+		dataType: string
+		lineageTag: 70076140-9eec-41bf-b571-c85dcee8aadf
+		summarizeBy: none
+		sourceColumn: Churn Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Reason'
+		dataType: string
+		lineageTag: 11ada499-4788-43ab-b15f-e32e3d128dac
+		summarizeBy: none
+		sourceColumn: Churn Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churned = if('Databel - Data'[Churn Label]="Yes",1,0)
+		formatString: 0
+		lineageTag: d850d12a-9c49-4f2a-bb26-d36b1852da43
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demographics = if('Databel - Data'[Senior]="Yes","Senior",If('Databel - Data'[Under 30]="Yes","Under 30","Other"))
+		lineageTag: 01a54628-bd3f-496a-980a-24aec027bbac
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age (bins)' =
+			IF(
+			  ISBLANK('Databel - Data'[Age]),
+			  BLANK(),
+			  INT('Databel - Data'[Age] / 5) * 5
+			)
+		formatString: 0
+		lineageTag: 6779df24-17e6-4eb3-bbe4-9f5f024efeb7
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Databel - Data"
+				          }
+				        },
+				        "Property": "Age"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 5.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"d","Entity":"Databel - Data"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Age"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Age"}},"Size":5.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Category' = SWITCH('Databel - Data'[Contract Type], "One Year", "Yearly", "Two Year", "Yearly", "Monthly")
+		lineageTag: c73bd86d-9b62-46f7-99fa-cb7aeb6dde77
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Consumption' = IF('Databel - Data'[Avg Monthly GB Download]<5,"Less than 5 GB", IF('Databel - Data'[Avg Monthly GB Download]<10,"Between 5 and 10 GB","10 or more GB"))
+		lineageTag: 131942cc-6096-40c5-8d67-d6c200b5dd68
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Databel - Data-576fc8a0-c25a-431c-b66e-69a336e0ed9f' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/5993/datasets/d6a32ec1293e10bd44441b4f8b4fe60b9776e0d1/Databel%20-%20Data.csv"),[Delimiter=",", Columns=29, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer ID", type text}, {"Churn Label", type text}, {"Account Length (in months)", Int64.Type}, {"Local Calls", Int64.Type}, {"Local Mins", type number}, {"Intl Calls", Int64.Type}, {"Intl Mins", type number}, {"Intl Active", type text}, {"Intl Plan", type text}, {"Extra International Charges", Int64.Type}, {"Customer Service Calls", Int64.Type}, {"Avg Monthly GB Download", Int64.Type}, {"Unlimited Data Plan", type text}, {"Extra Data Charges", Int64.Type}, {"State", type text}, {"Phone Number", type text}, {"Gender", type text}, {"Age", Int64.Type}, {"Under 30", type text}, {"Senior", type text}, {"Group", type text}, {"Number of Customers in Group", Int64.Type}, {"Device Protection & Online Backup", type text}, {"Contract Type", type text}, {"Payment Method", type text}, {"Monthly Charge", Int64.Type}, {"Total Charges", Int64.Type}, {"Churn Category", type text}, {"Churn Reason", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
