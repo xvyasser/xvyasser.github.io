@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1fc493770999b9203b62",
+  "position": {
+    "x": 836.41748268449965,
+    "y": 387.63792691664679,
+    "z": 8000,
+    "height": 331.38762837353715,
+    "width": 443.88822545975643,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimEducationLevel"
+                    }
+                  },
+                  "Property": "EducationLevel"
+                }
+              },
+              "queryRef": "DimEducationLevel.EducationLevel",
+              "nativeQueryRef": "Education Level",
+              "active": true,
+              "displayName": "Education Level"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "TotalEmployees"
+                }
+              },
+              "queryRef": "_Measures.TotalEmployees",
+              "nativeQueryRef": "Total Employees",
+              "displayName": "Total Employees"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "TotalEmployees"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

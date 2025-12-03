@@ -1,0 +1,118 @@
+table FactPerformanceRating
+	lineageTag: 98f41368-5a02-40d6-86df-51f37eb21459
+
+	column PerformanceID
+		dataType: string
+		lineageTag: cc8238e3-d035-4f56-9707-ab2f84f5290e
+		summarizeBy: none
+		sourceColumn: PerformanceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeID
+		dataType: string
+		lineageTag: 26438005-9309-49f1-9521-f9c12d535829
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReviewDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 98090ea0-c67e-4bc9-97dd-1d8f7a5295b0
+		summarizeBy: none
+		sourceColumn: ReviewDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EnvironmentSatisfaction
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e11219a-5a71-41a6-a0b8-6b944fdd71f2
+		summarizeBy: none
+		sourceColumn: EnvironmentSatisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobSatisfaction
+		dataType: int64
+		formatString: 0
+		lineageTag: ea32e0b7-274c-4205-b76d-4fafe0b6cd6d
+		summarizeBy: sum
+		sourceColumn: JobSatisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelationshipSatisfaction
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ca39687-adac-4587-8aa5-106645f53cd7
+		summarizeBy: sum
+		sourceColumn: RelationshipSatisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrainingOpportunitiesWithinYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 80ccfda8-1567-4b48-af49-e9b6954d84a9
+		summarizeBy: sum
+		sourceColumn: TrainingOpportunitiesWithinYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrainingOpportunitiesTaken
+		dataType: int64
+		formatString: 0
+		lineageTag: 43629841-e3f5-4b64-8094-7e048e056ae4
+		summarizeBy: sum
+		sourceColumn: TrainingOpportunitiesTaken
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkLifeBalance
+		dataType: int64
+		formatString: 0
+		lineageTag: 05145e75-b315-4d3f-a673-b991a8eda4bb
+		summarizeBy: sum
+		sourceColumn: WorkLifeBalance
+
+		annotation SummarizationSetBy = Automatic
+
+	column SelfRating
+		dataType: int64
+		formatString: 0
+		lineageTag: bd05a001-5ad2-4e2e-8872-0842a4d96da2
+		summarizeBy: none
+		sourceColumn: SelfRating
+
+		annotation SummarizationSetBy = Automatic
+
+	column ManagerRating
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d9a5260-072f-41d8-92f4-92b5920010ef
+		summarizeBy: sum
+		sourceColumn: ManagerRating
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactPerformanceRating-3bd46e32-272f-4e6e-b212-b2dbad8d9c28 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6064/datasets/d04261ece4afec96cd3ef43bd810ca636b2ec462/PerformanceRating.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"PerformanceID", type text}, {"EmployeeID", type text}, {"ReviewDate", type date}, {"EnvironmentSatisfaction", Int64.Type}, {"JobSatisfaction", Int64.Type}, {"RelationshipSatisfaction", Int64.Type}, {"TrainingOpportunitiesWithinYear", Int64.Type}, {"TrainingOpportunitiesTaken", Int64.Type}, {"WorkLifeBalance", Int64.Type}, {"SelfRating", Int64.Type}, {"ManagerRating", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

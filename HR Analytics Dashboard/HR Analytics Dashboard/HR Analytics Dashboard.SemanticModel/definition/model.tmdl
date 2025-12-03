@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DimEmployee","FactPerformanceRating","DimEducationLevel","DimRatingLevel","DimSatisfiedLevel"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_b73562fb-b75f-4898-b6a8-3f56d48e6428
+ref table DimEmployee
+ref table FactPerformanceRating
+ref table DimEducationLevel
+ref table DimRatingLevel
+ref table DimSatisfiedLevel
+ref table DimDate
+ref table LocalDateTable_aae7b02a-ff92-4ba0-ad08-98b400c799cd
+ref table LocalDateTable_d1d8c462-d1ab-4a39-8bf6-e1846c790304
+ref table LocalDateTable_45f39ce8-5675-4d6c-a1f9-c796b1df8963
+ref table LocalDateTable_06b5ac74-aeb4-4333-a9ed-1f2e0275f996
+ref table LocalDateTable_3fe28375-c968-42a8-b0b1-5db8fe10f4c5
+ref table LocalDateTable_c9ff112f-5c52-4555-95a5-cd92c10bcac2
+ref table LocalDateTable_d7e42004-ea05-448c-9853-cc4f04d274ed
+ref table LocalDateTable_d354f28b-e221-475c-8407-f2cb9baeeaeb
+ref table LocalDateTable_7752b2b4-17ad-40ef-a290-a45e0342c7f9
+ref table _Measures
+
+ref cultureInfo en-US
+

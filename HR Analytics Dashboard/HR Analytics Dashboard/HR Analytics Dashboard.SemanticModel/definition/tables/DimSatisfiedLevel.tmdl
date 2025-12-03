@@ -1,0 +1,32 @@
+table DimSatisfiedLevel
+	lineageTag: 574b964e-7b6c-4b81-85ce-2d3d18e4de20
+
+	column SatisfactionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 371c77a4-6262-4a25-9c28-4482d8b24995
+		summarizeBy: none
+		sourceColumn: SatisfactionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfactionLevel
+		dataType: string
+		lineageTag: 13495758-b3d2-4454-b13e-9584d158a60c
+		summarizeBy: none
+		sourceColumn: SatisfactionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSatisfiedLevel-baff5848-6545-4c03-ad7b-59a064652450 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6064/datasets/9d05df97a3992db867fe012222b8fea222cb6ffb/SatisfiedLevel.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SatisfactionID", Int64.Type}, {"SatisfactionLevel", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

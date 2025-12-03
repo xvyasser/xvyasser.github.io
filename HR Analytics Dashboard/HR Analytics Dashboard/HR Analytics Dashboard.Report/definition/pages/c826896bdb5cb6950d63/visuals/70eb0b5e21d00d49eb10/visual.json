@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "70eb0b5e21d00d49eb10",
+  "position": {
+    "x": 639.541437783616,
+    "y": 306.93097683305473,
+    "z": 4000,
+    "height": 207.88153809410079,
+    "width": 640.76427036064013,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimEmployee"
+                    }
+                  },
+                  "Property": "OverTime"
+                }
+              },
+              "queryRef": "DimEmployee.OverTime",
+              "nativeQueryRef": "OverTime",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "% Attrition Rate"
+                }
+              },
+              "queryRef": "_Measures.% Attrition Rate",
+              "nativeQueryRef": "% Attrition Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "% Attrition Rate"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

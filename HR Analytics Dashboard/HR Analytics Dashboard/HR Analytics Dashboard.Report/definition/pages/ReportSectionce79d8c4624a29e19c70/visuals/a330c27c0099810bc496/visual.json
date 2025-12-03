@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a330c27c0099810bc496",
+  "position": {
+    "x": 977.04322904227377,
+    "y": 457.33938380702176,
+    "z": 10000,
+    "height": 155.29973728206355,
+    "width": 283.69715786959637,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimRatingLevel"
+                    }
+                  },
+                  "Property": "RatingLevel"
+                }
+              },
+              "queryRef": "DimRatingLevel.RatingLevel",
+              "displayName": "Rating Level"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimRatingLevel"
+                    }
+                  },
+                  "Property": "RatingID"
+                }
+              },
+              "queryRef": "DimRatingLevel.RatingID",
+              "displayName": "Rating ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DimRatingLevel"
+                  }
+                },
+                "Property": "RatingLevel"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.89654244946811D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimRatingLevel.RatingID"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "170.31033127229955D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimRatingLevel.RatingLevel"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

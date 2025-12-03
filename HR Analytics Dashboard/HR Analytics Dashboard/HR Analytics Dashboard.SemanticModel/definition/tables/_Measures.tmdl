@@ -1,0 +1,144 @@
+table _Measures
+	lineageTag: 26d1b3f9-0c38-4bdf-8610-26d76cb97f66
+
+	measure TotalEmployees = DISTINCTCOUNT(DimEmployee[EmployeeID])
+		formatString: 0
+		lineageTag: e870c0f2-2310-4cf2-8450-1e3a02ffdf25
+
+	measure ActiveEmployees = CALCULATE([TotalEmployees], FILTER(DimEmployee, DimEmployee[Attrition] = "No"))
+		formatString: 0
+		lineageTag: ce46b07a-ffc1-4185-9288-510a6afd20ce
+
+	measure InactiveEmployees = CALCULATE([TotalEmployees], FILTER(DimEmployee, DimEmployee[Attrition] = "Yes"))
+		formatString: 0
+		lineageTag: 2f75e474-ad62-4549-aeb0-8cbc4b21148d
+
+	measure '% Attrition Rate' = DIVIDE([InactiveEmployees], [TotalEmployees])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c96f46fa-4e9a-4b4c-9ce6-07befaaae065
+
+		changedProperty = FormatString
+
+	measure TotalEmployeesDate =
+			
+			CALCULATE (
+			    [TotalEmployees],
+			    USERELATIONSHIP ( DimEmployee[HireDate], DimDate[Date] )
+			)
+		formatString: 0
+		lineageTag: 67cfe081-dce0-481b-abfc-fafd0232ead8
+
+	measure AverageSalary = AVERAGE(DimEmployee[Salary])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: b11ab4a8-d32d-4543-bf01-f00bbef491ca
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure LastReviewDate =
+			
+			IF (
+			    MAX ( FactPerformanceRating[ReviewDate] ) = BLANK (),
+			    "No Review Yet",
+			    MAX ( FactPerformanceRating[ReviewDate] )
+			)
+		formatString: mm/dd/yyyy
+		lineageTag: 1755468a-5030-4829-9c94-f246ee33340b
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure NextReviewDate =
+			
+			VAR reviewOrHire =
+			    IF (
+			        MAX ( FactPerformanceRating[ReviewDate] ) = BLANK (),
+			        MAX ( DimEmployee[HireDate] ),
+			        MAX ( FactPerformanceRating[ReviewDate] )
+			    )
+			RETURN
+			    reviewOrHire + 365
+		formatString: Mm/dd/yyyy
+		lineageTag: 46b8dfe2-a172-4548-9f7f-0cb6513c2c04
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure JobSatisfaction = MAX(FactPerformanceRating[JobSatisfaction])
+		formatString: 0
+		lineageTag: 53afefaa-5135-4268-87e8-98b3e9a00af0
+
+	measure EnvironmentSatisfaction =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[EnvironmentSatisfaction] ),
+			    USERELATIONSHIP ( FactPerformanceRating[EnvironmentSatisfaction], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: 18652463-33c2-48d8-97df-369161131d8b
+
+	measure RelationshipSatisfaction =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[RelationshipSatisfaction] ),
+			    USERELATIONSHIP ( FactPerformanceRating[RelationshipSatisfaction], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: 940b4730-d07e-4762-9ac0-b9855b0ab159
+
+	measure WorkLifeBalance =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[WorkLifeBalance] ),
+			    USERELATIONSHIP ( FactPerformanceRating[WorkLifeBalance], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: 3be08099-54ff-43e5-82ad-1fb07d3e105e
+
+	measure SelfRating =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[SelfRating] ),
+			    USERELATIONSHIP ( FactPerformanceRating[SelfRating], DimRatingLevel[RatingID] )
+			)
+		formatString: 0
+		lineageTag: 3c0e5bf9-2691-4078-95b4-be34a148f415
+
+	measure ManagerRating =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[ManagerRating] ),
+			    USERELATIONSHIP ( FactPerformanceRating[ManagerRating], DimRatingLevel[RatingID] )
+			)
+		formatString: 0
+		lineageTag: 6bab88b4-ef16-4085-9887-9f1a977ce52d
+
+	measure InactiveEmployeesDate = CALCULATE([InactiveEmployees], USERELATIONSHIP(DimEmployee[HireDate], DimDate[Date]))
+		formatString: 0
+		lineageTag: e3536688-8303-415f-b8a2-23eadd5355cf
+
+	measure '% Attrition Rate Date' = DIVIDE([InactiveEmployeesDate], [TotalEmployeesDate])
+		lineageTag: f4d69aa8-e02e-4ca8-b7d1-9d69c7f12807
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: 0356ff98-a709-46e1-9465-1a68f44e61cd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures-42e41b04-a0aa-4db6-bccb-3974bb8aaf7f = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 0ea2d5ad25244767b090281102847a29
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

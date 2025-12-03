@@ -1,0 +1,32 @@
+table DimRatingLevel
+	lineageTag: 1a6fe58e-77e0-4c4a-b784-aee9ad61f0c8
+
+	column RatingID
+		dataType: int64
+		formatString: 0
+		lineageTag: af61cec3-a0d2-43e6-afdc-0675d5f82b5b
+		summarizeBy: none
+		sourceColumn: RatingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RatingLevel
+		dataType: string
+		lineageTag: e3e1fa53-b7a6-4345-93c8-f1d8022cc7b8
+		summarizeBy: none
+		sourceColumn: RatingLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimRatingLevel-042cae39-180b-4453-8c14-bd79c17c1f4a = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6064/datasets/bb7b95f431126cc696e0e36b273df91cb7672d87/RatingLevel.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RatingID", Int64.Type}, {"RatingLevel", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

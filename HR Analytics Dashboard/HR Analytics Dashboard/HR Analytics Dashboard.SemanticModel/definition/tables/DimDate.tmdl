@@ -1,0 +1,345 @@
+table DimDate
+	lineageTag: 146e5e18-6b7a-4916-b39f-89d3802062d8
+
+	column Date
+		formatString: Long Date
+		lineageTag: 5a02200f-b4e8-4249-8df3-cb3c823a5e98
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 6a286dbe-971b-47ac-be45-bfbdb4287d1d
+			defaultHierarchy: LocalDateTable_aae7b02a-ff92-4ba0-ad08-98b400c799cd.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		formatString: 0
+		lineageTag: d42d5355-ff47-4e2f-8232-4b1acc39a9b2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Start'
+		formatString: General Date
+		lineageTag: 89c9ebae-9f68-4d0d-b1eb-b605566bf786
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Start]
+
+		variation Variation
+			isDefault
+			relationship: 0fc343e8-dd07-4491-ab7a-4d78f7d7771a
+			defaultHierarchy: LocalDateTable_d1d8c462-d1ab-4a39-8bf6-e1846c790304.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearEnd
+		formatString: General Date
+		lineageTag: ccd81a47-aa9e-4d9b-abb9-c2dd194b6da2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearEnd]
+
+		variation Variation
+			isDefault
+			relationship: 897a61ab-cfcc-41c3-953d-3153c21865d2
+			defaultHierarchy: LocalDateTable_45f39ce8-5675-4d6c-a1f9-c796b1df8963.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		formatString: 0
+		lineageTag: f0a26987-b101-400a-8030-cb5ae5a90d0f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthStart
+		formatString: General Date
+		lineageTag: c2fc491b-8238-4e57-9995-3afa9ac338e5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthStart]
+
+		variation Variation
+			isDefault
+			relationship: 30156ea1-b8bd-4f78-872e-04631f6c61d3
+			defaultHierarchy: LocalDateTable_06b5ac74-aeb4-4333-a9ed-1f2e0275f996.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthEnd
+		formatString: General Date
+		lineageTag: f424fdfb-dfcd-498a-87fe-9ea891c48070
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthEnd]
+
+		variation Variation
+			isDefault
+			relationship: b4e779f1-b259-428c-aa46-e7e2898365c5
+			defaultHierarchy: LocalDateTable_3fe28375-c968-42a8-b0b1-5db8fe10f4c5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysInMonth
+		formatString: 0
+		lineageTag: a04d5830-1f55-42d6-8bde-527e9d08b7c5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DaysInMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthNumber
+		formatString: 0
+		lineageTag: 8bfa517b-9fbe-46a8-a7c7-1e9af9747af4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YearMonthNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthName
+		lineageTag: 3cc247f9-1594-440e-9a27-fc7510f1b627
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonthName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumber
+		formatString: 0
+		lineageTag: a5ad6d86-d4d5-47cb-b67c-2cffac6ca900
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		lineageTag: fc7079b9-66a2-43f8-bc45-27ffca8e34b8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNameShort
+		lineageTag: 8a4bee17-3091-4485-86e9-f5b6a2d4efb3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayNameShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		formatString: 0
+		lineageTag: e3f4143b-6a5a-4c47-961d-fab165be3ba8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		lineageTag: 6ce68c7a-2262-4e5d-812b-5ad405724020
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNameShort
+		lineageTag: 18a17df6-552f-4d2c-9337-fbb597642f06
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthNameShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		formatString: 0
+		lineageTag: 2f6345ca-f966-42d7-bdb7-6d5920e854c0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterName
+		lineageTag: a5a1234d-def3-4625-86c5-1f6172ff7889
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [QuarterName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarterNumber
+		formatString: 0
+		lineageTag: 17608a56-c4ef-4759-82d1-b439304910a8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YearQuarterNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarterName
+		lineageTag: 3d1b6303-98da-4f8d-a056-a978d9c91f9a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearQuarterName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterStart
+		formatString: General Date
+		lineageTag: 18aefc7b-1a90-43f6-9f24-ae3355abe819
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [QuarterStart]
+
+		variation Variation
+			isDefault
+			relationship: 7098214f-e1b5-4baa-ba1a-0c88d00fcf7d
+			defaultHierarchy: LocalDateTable_c9ff112f-5c52-4555-95a5-cd92c10bcac2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterEnd
+		formatString: General Date
+		lineageTag: d6e2c596-21ac-4ff4-8ea4-ff29531d46bc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [QuarterEnd]
+
+		variation Variation
+			isDefault
+			relationship: 4316cbd4-620e-459a-8106-24f6606c1cd0
+			defaultHierarchy: LocalDateTable_d7e42004-ea05-448c-9853-cc4f04d274ed.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNumber
+		formatString: 0
+		lineageTag: 5e386ab5-1c67-4abc-bdca-e5335aef23ea
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekStart
+		formatString: General Date
+		lineageTag: a1b3710a-36a3-4f09-ab19-f871ddf7cedf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WeekStart]
+
+		variation Variation
+			isDefault
+			relationship: a8f68b50-bd1b-4aa1-9435-2d69e36a43f5
+			defaultHierarchy: LocalDateTable_d354f28b-e221-475c-8407-f2cb9baeeaeb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekEnd
+		formatString: General Date
+		lineageTag: c23c6528-486e-460f-afbe-92f5660f0ecb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WeekEnd]
+
+		variation Variation
+			isDefault
+			relationship: daa16e23-6eca-4cbd-b2e9-1b2c21d1c01f
+			defaultHierarchy: LocalDateTable_7752b2b4-17ad-40ef-a290-a45e0342c7f9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		formatString: 0
+		lineageTag: a55df82f-73c3-45c5-99bf-9084ea951e53
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [FiscalYear]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarter
+		formatString: 0
+		lineageTag: ea070c05-685f-491f-b4a8-22f824283fce
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [FiscalQuarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonth
+		formatString: 0
+		lineageTag: 9dfb0818-de61-48a0-b65d-94b4527437c6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [FiscalMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate-36dab2c1-ed73-498b-8095-b8df097a9c1b = calculated
+		mode: import
+		source = ```
+				
+				VAR _minYear = YEAR(MIN(DimEmployee[HireDate]))
+				VAR _maxYear = YEAR(MAX(DimEmployee[HireDate]))
+				VAR _fiscalStart = 4 
+				
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(
+				                DATE(_minYear,1,1),
+				                DATE(_maxYear,12,31)
+				
+				),
+				
+				"Year",YEAR([Date]),
+				"Year Start",DATE( YEAR([Date]),1,1),
+				"YearEnd",DATE( YEAR([Date]),12,31),
+				"MonthNumber",MONTH([Date]),
+				"MonthStart",DATE( YEAR([Date]), MONTH([Date]), 1),
+				"MonthEnd",EOMONTH([Date],0),
+				"DaysInMonth",DATEDIFF(DATE( YEAR([Date]), MONTH([Date]), 1),EOMONTH([Date],0),DAY)+1,
+				"YearMonthNumber",INT(FORMAT([Date],"YYYYMM")),
+				"YearMonthName",FORMAT([Date],"YYYY-MMM"),
+				"DayNumber",DAY([Date]),
+				"DayName",FORMAT([Date],"DDDD"),
+				"DayNameShort",FORMAT([Date],"DDD"),
+				"DayOfWeek",WEEKDAY([Date]),
+				"MonthName",FORMAT([Date],"MMMM"),
+				"MonthNameShort",FORMAT([Date],"MMM"),
+				"Quarter",QUARTER([Date]),
+				"QuarterName","Q"&FORMAT([Date],"Q"),
+				"YearQuarterNumber",INT(FORMAT([Date],"YYYYQ")),
+				"YearQuarterName",FORMAT([Date],"YYYY")&" Q"&FORMAT([Date],"Q"),
+				"QuarterStart",DATE( YEAR([Date]), (QUARTER([Date])*3)-2, 1),
+				"QuarterEnd",EOMONTH(DATE( YEAR([Date]), QUARTER([Date])*3, 1),0),
+				"WeekNumber",WEEKNUM([Date]),
+				"WeekStart", [Date]-WEEKDAY([Date])+1,
+				"WeekEnd",[Date]+7-WEEKDAY([Date]),
+				"FiscalYear",if(_fiscalStart=1,YEAR([Date]),YEAR([Date])+ QUOTIENT(MONTH([Date])+ (13-_fiscalStart),13)),
+				"FiscalQuarter",QUARTER( DATE( YEAR([Date]),MOD( MONTH([Date])+ (13-_fiscalStart) -1 ,12) +1,1) ),
+				"FiscalMonth",MOD( MONTH([Date])+ (13-_fiscalStart) -1 ,12) +1
+				)
+				```
+
+	annotation PBI_Id = 902b3b7d0ba74da489da52b00f7393a1
+
