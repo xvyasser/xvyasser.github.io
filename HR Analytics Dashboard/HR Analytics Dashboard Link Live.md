@@ -1,6 +1,6 @@
-# Steam Dashboard
+# HR Analysis Dashboard
 
-A Power BI dashboard analyzing HR Analytics data.
+A Power BI dashboard analyzing HR  data.
 
 ## 📊 View Live Dashboard
 
