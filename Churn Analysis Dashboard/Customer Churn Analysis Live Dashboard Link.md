@@ -4,7 +4,7 @@ A Power BI dashboard analyzing Customer churn data.
 
 ## 📊 View Live Dashboard
 
-[Click here to view the interactive dashboard](https://app.powerbi.com/view?r=eyJrIjoiZTBlMTk2YTQtMzIyMy00YTVlLTkxOWUtNzM5Mjc5Njg0NTA5IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)
+[Click here to view the interactive dashboard](https://app.powerbi.com/view?r=eyJrIjoiZTBlMTk2YTQtMzIyMy00YTVlLTkxOWUtNzM5Mjc5Njg0NTA5IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9&pageName=19cf94fac3c4626b6afd)
 
 
 ## How to Use the Dashboard
